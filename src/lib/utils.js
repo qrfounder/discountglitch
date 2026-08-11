@@ -1,5 +1,6 @@
 import { clsx } from "clsx";
 import { twMerge } from "tailwind-merge";
+import { trackCtaClick } from "@/lib/tracking";
 
 export function cn(...inputs) {
   return twMerge(clsx(inputs));
@@ -12,6 +13,7 @@ export const OFFER_URL =
 
 /** Bridge CTAs redirect to the partner CPA page */
 export function goToOffer() {
+  trackCtaClick();
   window.location.assign(OFFER_URL);
 }
 
