@@ -7,7 +7,8 @@ export function cn(...inputs) {
 
 /** CPA / partner offer URL — set in .env as VITE_OFFER_URL */
 export const OFFER_URL =
-  import.meta.env.VITE_OFFER_URL || "https://example.com/offer";
+  import.meta.env.VITE_OFFER_URL ||
+  "https://linkthem.net/aff_c?offer_id=941&aff_id=197355";
 
 /** Bridge CTAs redirect to the partner CPA page */
 export function goToOffer() {
