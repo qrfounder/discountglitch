@@ -9,18 +9,18 @@ function getVisitorId() {
   return id;
 }
 
-async function sendEvent(event) {
+async function sendEvent(payload) {
   try {
     await fetch("/api/track", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({
         visitorId: getVisitorId(),
-        event,
         path: window.location.pathname,
         referrer: document.referrer || null,
+        ...payload,
       }),
-      keepalive: event === "cta_click",
+      keepalive: payload.event === "cta_click" || payload.event === "lead_submit",
     });
   } catch {
     // Non-blocking analytics
@@ -28,9 +28,13 @@ async function sendEvent(event) {
 }
 
 export function trackPageView() {
-  sendEvent("page_view");
+  return sendEvent({ event: "page_view" });
 }
 
 export function trackCtaClick() {
-  sendEvent("cta_click");
+  return sendEvent({ event: "cta_click" });
+}
+
+export function submitLead({ email, age }) {
+  return sendEvent({ event: "lead_submit", email, age });
 }

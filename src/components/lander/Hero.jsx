@@ -1,12 +1,11 @@
-import { Button } from "@/components/ui/button";
-import { goToOffer } from "@/lib/utils";
+import ClaimForm from "@/components/lander/ClaimForm";
 import ClaimCounter from "@/components/lander/ClaimCounter";
 import ActivityToast from "@/components/lander/ActivityToast";
 import Faq from "@/components/lander/Faq";
 
 const STEPS = [
-  "Tap the Claim button",
-  "Enter email and basic info",
+  "Enter your email and age (25+)",
+  "Tap Claim Reward",
   "Finish 4-5 featured deals",
   "Receive your $750 gift card",
 ];
@@ -39,9 +38,7 @@ export default function Hero() {
           ))}
         </div>
 
-        <Button size="full" className="mt-7" onClick={goToOffer}>
-          Claim Reward
-        </Button>
+        <ClaimForm />
 
         <ClaimCounter />
         <ActivityToast />

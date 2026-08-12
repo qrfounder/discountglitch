@@ -25,6 +25,8 @@ db.exec(`
     path TEXT,
     page_views INTEGER NOT NULL DEFAULT 0,
     cta_clicked INTEGER NOT NULL DEFAULT 0,
+    email TEXT,
+    age INTEGER,
     first_seen TEXT NOT NULL,
     last_seen TEXT NOT NULL
   );
@@ -32,5 +34,15 @@ db.exec(`
   CREATE INDEX IF NOT EXISTS idx_visitors_last_seen ON visitors(last_seen DESC);
   CREATE INDEX IF NOT EXISTS idx_visitors_cta ON visitors(cta_clicked);
 `);
+
+function ensureColumn(name, type) {
+  const cols = db.prepare("PRAGMA table_info(visitors)").all();
+  if (!cols.some((c) => c.name === name)) {
+    db.exec(`ALTER TABLE visitors ADD COLUMN ${name} ${type}`);
+  }
+}
+
+ensureColumn("email", "TEXT");
+ensureColumn("age", "INTEGER");
 
 export default db;

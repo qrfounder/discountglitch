@@ -3,6 +3,7 @@ import { useNavigate } from "react-router-dom";
 import {
   BarChart3,
   LogOut,
+  Mail,
   MousePointerClick,
   RefreshCw,
   Trash2,
@@ -135,7 +136,7 @@ function Dashboard({ token, onLogout }) {
 
   useEffect(() => {
     load();
-    const interval = setInterval(load, 30000);
+    const interval = setInterval(load, 15000);
     return () => clearInterval(interval);
   }, [load]);
 
@@ -178,12 +179,18 @@ function Dashboard({ token, onLogout }) {
           </p>
         )}
 
-        <div className="grid gap-3 sm:grid-cols-2 lg:grid-cols-4">
+        <div className="grid gap-3 sm:grid-cols-2 lg:grid-cols-5">
           <StatCard
             icon={Users}
             label="Visitors"
             value={stats?.totalVisitors ?? "—"}
             accent="text-dg-blue"
+          />
+          <StatCard
+            icon={Mail}
+            label="Leads"
+            value={stats?.leads ?? "—"}
+            accent="text-sky-600"
           />
           <StatCard
             icon={MousePointerClick}
@@ -215,10 +222,12 @@ function Dashboard({ token, onLogout }) {
           </div>
 
           <div className="overflow-x-auto">
-            <table className="w-full min-w-[900px] text-left text-sm">
+            <table className="w-full min-w-[1100px] text-left text-sm">
               <thead className="bg-dg-surface text-xs uppercase tracking-wide text-dg-muted">
                 <tr>
                   <th className="px-4 py-3 font-semibold">Last seen</th>
+                  <th className="px-4 py-3 font-semibold">Email</th>
+                  <th className="px-4 py-3 font-semibold">Age</th>
                   <th className="px-4 py-3 font-semibold">IP</th>
                   <th className="px-4 py-3 font-semibold">Location</th>
                   <th className="px-4 py-3 font-semibold">Device</th>
@@ -230,7 +239,7 @@ function Dashboard({ token, onLogout }) {
               <tbody className="divide-y divide-dg-border">
                 {visitors.length === 0 && (
                   <tr>
-                    <td colSpan={7} className="px-4 py-8 text-center text-dg-muted">
+                    <td colSpan={9} className="px-4 py-8 text-center text-dg-muted">
                       {loading ? "Loading…" : "No visitors yet"}
                     </td>
                   </tr>
@@ -239,6 +248,14 @@ function Dashboard({ token, onLogout }) {
                   <tr key={v.id} className="hover:bg-dg-surface/60">
                     <td className="whitespace-nowrap px-4 py-3 text-dg-text">
                       {formatTime(v.last_seen)}
+                    </td>
+                    <td className="max-w-[200px] truncate px-4 py-3 text-dg-text">
+                      {v.email || (
+                        <span className="text-dg-muted">—</span>
+                      )}
+                    </td>
+                    <td className="px-4 py-3 tabular-nums text-dg-text">
+                      {v.age ?? "—"}
                     </td>
                     <td className="whitespace-nowrap px-4 py-3 font-mono text-xs text-dg-text">
                       {v.ip}
