@@ -13,33 +13,34 @@ const STEPS = [
 export default function Hero() {
   return (
     <section className="bg-white">
-      <div className="mx-auto max-w-md px-5 pb-10 pt-8 text-center">
-        <h1 className="font-display text-[1.95rem] font-bold leading-snug tracking-tight text-dg-text text-balance">
+      <div className="mx-auto w-full max-w-md safe-px pb-12 pt-7 text-center sm:max-w-lg sm:pt-10 sm:pb-14 md:max-w-xl md:pt-12">
+        <h1 className="font-display text-[1.75rem] font-bold leading-snug tracking-tight text-dg-text text-balance sm:text-[2rem] md:text-[2.15rem]">
           Claim up to a $750 Gift Card
         </h1>
 
-        <p className="mt-3 text-sm text-dg-muted">
+        <p className="mx-auto mt-3 max-w-sm text-sm leading-relaxed text-dg-muted sm:text-[15px]">
           4 steps on our partner rewards page
         </p>
 
-        <div className="mt-6 overflow-hidden rounded-xl border border-dg-border bg-white text-left">
+        <div className="mt-6 overflow-hidden rounded-xl border border-dg-border bg-white text-left shadow-sm sm:mt-8">
           {STEPS.map((step, i) => (
             <div
               key={step}
-              className={`flex items-center gap-3.5 px-4 py-3.5 ${
+              className={`flex items-start gap-3 px-4 py-3.5 sm:items-center sm:gap-3.5 sm:px-5 sm:py-4 ${
                 i < STEPS.length - 1 ? "border-b border-dg-border" : ""
               }`}
             >
-              <span className="w-4 shrink-0 text-center text-base font-bold text-dg-blue">
+              <span className="mt-0.5 w-5 shrink-0 text-center text-base font-bold text-dg-blue sm:mt-0 sm:w-4">
                 {i + 1}
               </span>
-              <span className="text-[15px] font-semibold text-dg-text">{step}</span>
+              <span className="text-[14px] font-semibold leading-snug text-dg-text sm:text-[15px]">
+                {step}
+              </span>
             </div>
           ))}
         </div>
 
         <ClaimForm />
-
         <ClaimCounter />
         <ActivityToast />
         <Faq />

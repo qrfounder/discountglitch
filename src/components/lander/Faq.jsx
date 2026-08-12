@@ -33,15 +33,17 @@ const FAQS = [
 
 export default function Faq() {
   return (
-    <div id="faq" className="mt-10 border-t border-dg-border pt-8 text-left">
-      <h2 className="text-center text-[13px] font-semibold uppercase tracking-[0.12em] text-dg-muted">
+    <div id="faq" className="mt-8 border-t border-dg-border pt-7 text-left sm:mt-10 sm:pt-8">
+      <h2 className="text-center text-[12px] font-semibold uppercase tracking-[0.12em] text-dg-muted sm:text-[13px]">
         Common questions
       </h2>
 
-      <Accordion type="multiple" defaultValue={["item-0"]} className="mt-4">
+      <Accordion type="multiple" defaultValue={["item-0"]} className="mt-3 sm:mt-4">
         {FAQS.map((faq, i) => (
           <AccordionItem key={faq.q} value={`item-${i}`}>
-            <AccordionTrigger className="text-[15px]">{faq.q}</AccordionTrigger>
+            <AccordionTrigger className="min-h-[48px] text-[14px] touch-manipulation sm:text-[15px]">
+              {faq.q}
+            </AccordionTrigger>
             <AccordionContent>{faq.a}</AccordionContent>
           </AccordionItem>
         ))}

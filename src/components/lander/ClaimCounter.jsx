@@ -35,7 +35,7 @@ export default function ClaimCounter() {
   }, []);
 
   return (
-    <p className="mt-3 flex items-center justify-center gap-2 text-sm text-dg-muted">
+    <p className="mt-4 flex flex-wrap items-center justify-center gap-x-2 gap-y-1 text-[13px] text-dg-muted sm:mt-5 sm:text-sm">
       <span className="relative flex h-2 w-2 shrink-0" aria-hidden="true">
         <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-emerald-400 opacity-70" />
         <span className="relative inline-flex h-2 w-2 rounded-full bg-emerald-500" />

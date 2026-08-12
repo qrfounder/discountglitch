@@ -24,22 +24,24 @@ export default function ActivityToast() {
 
   return (
     <div
-      className={`mt-5 transition-all duration-500 ease-out ${
+      className={`mt-5 transition-all duration-500 ease-out sm:mt-6 ${
         show ? "translate-y-0 opacity-100" : "translate-y-1 opacity-0"
       }`}
       aria-live="polite"
       aria-label="Recent activity"
     >
-      <div className="mx-auto max-w-[280px] rounded-xl border border-dg-border bg-dg-surface px-3.5 py-3 text-left shadow-sm">
+      <div className="w-full rounded-xl border border-dg-border bg-dg-surface px-4 py-3 text-left shadow-sm sm:px-5">
         <p className="text-[11px] font-medium uppercase tracking-wide text-dg-muted">
           Recent activity
         </p>
-        <p className="mt-1.5 text-[12px] leading-snug text-dg-text">
+        <p className="mt-1.5 text-[13px] leading-snug text-dg-text sm:text-sm">
           <span className="font-semibold">{event.name}</span>
           <span className="text-dg-muted"> from {event.city}</span>
         </p>
-        <p className="mt-0.5 text-[12px] text-dg-muted">{event.action}.</p>
-        <p className="mt-1 text-[10px] text-zinc-400">{event.time}</p>
+        <p className="mt-0.5 text-[12px] text-dg-muted sm:text-[13px]">
+          {event.action}.
+        </p>
+        <p className="mt-1 text-[10px] text-zinc-400 sm:text-[11px]">{event.time}</p>
       </div>
     </div>
   );
