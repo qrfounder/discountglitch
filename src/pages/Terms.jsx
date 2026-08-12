@@ -33,9 +33,9 @@ export default function Terms() {
         Eligibility & conduct
       </h2>
       <p>
-        Programs are generally for adults 25+ with accurate information. Bot
-        traffic, fake identities, and having others complete offers for you
-        violate partner rules and may void rewards.
+        Provide accurate information when claiming. Bot traffic, fake
+        identities, and having others complete offers for you violate partner
+        rules and may void rewards.
       </p>
 
       <h2 className="font-display text-lg font-bold text-dg-text">

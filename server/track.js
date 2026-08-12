@@ -60,7 +60,7 @@ router.post("/track", (req, res) => {
     if (!EMAIL_RE.test(trimmed) || trimmed.length > 254) {
       return res.status(400).json({ error: "Invalid email" });
     }
-    if (!Number.isInteger(ageNum) || ageNum < 25 || ageNum > 120) {
+    if (!Number.isInteger(ageNum) || ageNum < 1 || ageNum > 120) {
       return res.status(400).json({ error: "Invalid age" });
     }
 

@@ -19,9 +19,6 @@ export default function ClaimForm() {
     if (!age || Number.isNaN(ageNum) || ageNum < 1 || ageNum > 120) {
       return "Enter your age";
     }
-    if (ageNum < 25) {
-      return "You must be 25 or older to continue";
-    }
     return null;
   };
 
@@ -54,7 +51,7 @@ export default function ClaimForm() {
           Confirm your details to continue
         </p>
         <p className="mt-0.5 text-[12px] text-dg-muted">
-          Required before opening the partner rewards page · Ages 25+
+          Required before opening the partner rewards page
         </p>
       </div>
 
@@ -80,17 +77,14 @@ export default function ClaimForm() {
             type="number"
             name="age"
             inputMode="numeric"
-            min={25}
+            min={1}
             max={120}
-            placeholder="25"
+            placeholder="Age"
             value={age}
             onChange={(e) => setAge(e.target.value)}
             className="mt-1.5 w-full rounded-lg border border-dg-border bg-white px-3.5 py-3 text-[15px] text-dg-text outline-none transition placeholder:text-zinc-400 focus:border-dg-blue focus:ring-2 focus:ring-dg-blue/20"
             required
           />
-          <span className="mt-1 block text-[11px] text-dg-muted">
-            Must be 25 or older
-          </span>
         </label>
 
         {error && (
@@ -104,8 +98,8 @@ export default function ClaimForm() {
         </Button>
 
         <p className="text-center text-[11px] leading-relaxed text-dg-muted">
-          By continuing you confirm you are 25+ and agree to continue to our
-          partner page to complete 4–5 featured deals.
+          By continuing you agree to continue to our partner page to complete
+          4–5 featured deals.
         </p>
       </div>
     </form>

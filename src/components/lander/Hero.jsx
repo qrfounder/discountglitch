@@ -4,7 +4,7 @@ import ActivityToast from "@/components/lander/ActivityToast";
 import Faq from "@/components/lander/Faq";
 
 const STEPS = [
-  "Enter your email and age (25+)",
+  "Enter your email and age",
   "Tap Claim Reward",
   "Finish 4-5 featured deals",
   "Receive your $750 gift card",
