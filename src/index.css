@@ -31,6 +31,14 @@
     --font-wordmark: "Outfit", -apple-system, BlinkMacSystemFont, sans-serif;
   }
 
+  @font-face {
+    font-family: "Outfit";
+    font-style: normal;
+    font-weight: 800;
+    font-display: swap;
+    src: url("./assets/fonts/outfit-800.woff2") format("woff2");
+  }
+
   * {
     @apply border-border;
   }
