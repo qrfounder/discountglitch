@@ -249,7 +249,7 @@ function Dashboard({ token, onLogout }) {
           </p>
         )}
 
-        <div className="grid grid-cols-2 gap-2.5 sm:gap-3 lg:grid-cols-5">
+        <div className="grid grid-cols-2 gap-2.5 sm:grid-cols-3 sm:gap-3 lg:grid-cols-5">
           <StatCard
             icon={Users}
             label="Visitors"

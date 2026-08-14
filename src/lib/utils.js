@@ -11,10 +11,13 @@ export const OFFER_URL =
   import.meta.env.VITE_OFFER_URL ||
   "https://linkthem.net/aff_c?offer_id=941&aff_id=197355";
 
-/** Bridge CTAs redirect to the partner CPA page */
-export function goToOffer() {
+/** Bridge CTAs redirect to the partner CPA page (optional per-offer URL). */
+export function goToOffer(offer) {
   trackCtaClick();
-  window.location.assign(OFFER_URL);
+  const url =
+    (offer && typeof offer.redirectUrl === "string" && offer.redirectUrl.trim()) ||
+    OFFER_URL;
+  window.location.assign(url);
 }
 
 const FIRST = [

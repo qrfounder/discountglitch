@@ -4,29 +4,31 @@
 
 @layer base {
   :root {
-    --background: 0 0% 100%;
-    --foreground: 0 0% 20%;
+    --background: 240 5% 96%;
+    --foreground: 240 6% 10%;
     --card: 0 0% 100%;
-    --card-foreground: 0 0% 20%;
+    --card-foreground: 240 6% 10%;
     --popover: 0 0% 100%;
-    --popover-foreground: 0 0% 20%;
-    --primary: 221 76% 44%;
+    --popover-foreground: 240 6% 10%;
+    --primary: 211 100% 45%;
     --primary-foreground: 0 0% 100%;
-    --secondary: 210 20% 98%;
-    --secondary-foreground: 0 0% 20%;
-    --muted: 210 20% 98%;
-    --muted-foreground: 0 0% 40%;
-    --accent: 221 76% 44%;
+    --secondary: 240 5% 96%;
+    --secondary-foreground: 240 6% 10%;
+    --muted: 240 5% 96%;
+    --muted-foreground: 240 4% 46%;
+    --accent: 211 100% 45%;
     --accent-foreground: 0 0% 100%;
     --destructive: 0 84% 50%;
     --destructive-foreground: 0 0% 98%;
-    --border: 214 20% 90%;
-    --input: 214 20% 90%;
-    --ring: 221 76% 44%;
-    --radius: 0.75rem;
-    --font-heading: "Inter", "Helvetica Neue", Arial, sans-serif;
-    --font-body: "Inter", "Helvetica Neue", Arial, sans-serif;
-    --font-display: "Inter", "Helvetica Neue", Arial, sans-serif;
+    --border: 240 5% 84%;
+    --input: 240 5% 84%;
+    --ring: 211 100% 45%;
+    --radius: 1.25rem;
+    --font-heading: -apple-system, BlinkMacSystemFont, "SF Pro Display", "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+    --font-body: -apple-system, BlinkMacSystemFont, "SF Pro Text", "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+    --font-display: -apple-system, BlinkMacSystemFont, "SF Pro Display", "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+    --font-serif: -apple-system, BlinkMacSystemFont, "SF Pro Display", "Segoe UI", sans-serif;
+    --font-wordmark: "Outfit", -apple-system, BlinkMacSystemFont, sans-serif;
   }
 
   * {
@@ -39,15 +41,19 @@
   }
 
   body {
-    @apply bg-white text-foreground font-body antialiased;
-    color: #333333;
+    @apply font-body antialiased text-dg-text bg-dg-canvas;
     overflow-x: hidden;
+    -webkit-font-smoothing: antialiased;
   }
 
   input,
   select,
   textarea {
     font-size: 16px;
+  }
+
+  ::selection {
+    background: rgba(0, 113, 227, 0.18);
   }
 
   @media (prefers-reduced-motion: reduce) {
@@ -64,7 +70,153 @@
   }
 }
 
+@layer components {
+  .dg-eyebrow {
+    @apply text-[12px] font-semibold uppercase tracking-[0.06em] text-dg-blue;
+  }
+
+  .dg-display {
+    font-family: var(--font-display);
+    letter-spacing: -0.022em;
+    font-weight: 700;
+    line-height: 1.05;
+  }
+
+  .dg-panel {
+    background: #ffffff;
+    border: none;
+    box-shadow: 0 2px 12px rgba(0, 0, 0, 0.04);
+  }
+
+  .dg-cta {
+    background: #0071e3;
+    color: #fff;
+  }
+  .dg-cta:hover {
+    background: #0077ed;
+  }
+
+  .dg-wordmark {
+    font-family: var(--font-wordmark);
+    font-weight: 800;
+    letter-spacing: -0.045em;
+    line-height: 1;
+    color: #1D1D1F;
+  }
+
+  .dg-wordmark-accent {
+    color: #0071E3;
+  }
+
+  .as-section-title {
+    @apply text-[28px] sm:text-[32px] font-bold tracking-tight text-dg-navy;
+    letter-spacing: -0.02em;
+  }
+
+  .as-card {
+    @apply bg-white rounded-[22px] overflow-hidden;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.04), 0 1px 2px rgba(0, 0, 0, 0.03);
+    transition: transform 0.2s cubic-bezier(0.25, 0.1, 0.25, 1), box-shadow 0.2s ease;
+  }
+
+  .as-card:hover {
+    box-shadow: 0 8px 28px rgba(0, 0, 0, 0.08), 0 2px 6px rgba(0, 0, 0, 0.04);
+  }
+
+  .as-app-icon {
+    border-radius: 22.5%;
+    overflow: hidden;
+    position: relative;
+    isolation: isolate;
+  }
+
+  /* Landscape offer promo thumbnail (not iOS squircle) */
+  .as-offer-thumb {
+    border-radius: 12px;
+    overflow: hidden;
+    position: relative;
+  }
+
+  /* iOS app-icon specular highlight (Apple HIG look) */
+  .as-app-icon::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(
+      180deg,
+      rgba(255, 255, 255, 0.38) 0%,
+      rgba(255, 255, 255, 0.08) 38%,
+      rgba(255, 255, 255, 0) 55%,
+      rgba(0, 0, 0, 0.08) 100%
+    );
+    pointer-events: none;
+    z-index: 1;
+  }
+
+  /* App Store “GET” pill — exact interaction pattern */
+  .as-get-btn {
+    @apply inline-flex items-center justify-center rounded-full font-semibold;
+    background: rgba(0, 113, 227, 0.12);
+    color: #0071e3;
+    transition: transform 0.15s cubic-bezier(0.25, 0.1, 0.25, 1), background 0.15s ease, color 0.15s ease;
+  }
+  .as-get-btn:hover {
+    background: #0071e3;
+    color: #fff;
+  }
+  .as-get-btn:active {
+    transform: scale(0.94);
+  }
+
+  .as-get-btn-solid {
+    @apply inline-flex items-center justify-center rounded-full font-semibold text-white;
+    background: #0071e3;
+    transition: transform 0.15s cubic-bezier(0.25, 0.1, 0.25, 1), background 0.15s ease;
+  }
+  .as-get-btn-solid:hover {
+    background: #0077ed;
+  }
+  .as-get-btn-solid:active {
+    transform: scale(0.96);
+  }
+
+  .as-press {
+    transition: transform 0.15s cubic-bezier(0.25, 0.1, 0.25, 1);
+  }
+  .as-press:active {
+    transform: scale(0.97);
+  }
+
+  /* Story card image ken-burns on hover (App Store Today) */
+  .as-story-media {
+    transition: transform 0.7s cubic-bezier(0.25, 0.1, 0.25, 1);
+  }
+  .group:hover .as-story-media {
+    transform: scale(1.04);
+  }
+
+  /* Soft blue pulse for live activity (Apple Fitness / Find My style) */
+  .as-live-dot {
+    @apply relative inline-flex h-2 w-2;
+  }
+  .as-live-dot::before {
+    content: "";
+    @apply absolute inset-0 rounded-full bg-[#FF2D55];
+    animation: as-ping 1.6s cubic-bezier(0, 0, 0.2, 1) infinite;
+  }
+  .as-live-dot::after {
+    content: "";
+    @apply relative inline-flex h-2 w-2 rounded-full bg-[#FF2D55];
+  }
+}
+
 @layer utilities {
+  .font-serif-display {
+    font-family: var(--font-display);
+    letter-spacing: -0.02em;
+    font-weight: 700;
+  }
+
   .text-balance {
     text-wrap: balance;
   }
@@ -83,5 +235,63 @@
       padding-left: max(1.5rem, env(safe-area-inset-left));
       padding-right: max(1.5rem, env(safe-area-inset-right));
     }
+  }
+
+  .hide-scrollbar {
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+  }
+  .hide-scrollbar::-webkit-scrollbar {
+    display: none;
+  }
+
+  .dg-feed-in {
+    animation: dg-feed-in 0.45s ease-out both;
+  }
+
+  @keyframes as-ping {
+    75%,
+    100% {
+      transform: scale(2.2);
+      opacity: 0;
+    }
+  }
+
+  @keyframes as-shimmer {
+    0% {
+      background-position: 200% 0;
+    }
+    100% {
+      background-position: -200% 0;
+    }
+  }
+
+  .as-shimmer-border {
+    position: relative;
+  }
+  .as-shimmer-border::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    border-radius: inherit;
+    padding: 1px;
+    background: linear-gradient(110deg, transparent 30%, rgba(255, 255, 255, 0.55) 50%, transparent 70%);
+    background-size: 200% 100%;
+    animation: as-shimmer 2.8s linear infinite;
+    pointer-events: none;
+    -webkit-mask: linear-gradient(#000 0 0) content-box, linear-gradient(#000 0 0);
+    -webkit-mask-composite: xor;
+    mask-composite: exclude;
+  }
+
+  .offer-img--fashion,
+  .offer-img--food,
+  .offer-img--warehouse,
+  .offer-img--marketplace,
+  .offer-img--retail,
+  .offer-img--athletic,
+  .offer-img--beauty,
+  .offer-hero-img {
+    filter: saturate(1.04) contrast(1.03) brightness(0.99);
   }
 }
