@@ -50,7 +50,7 @@ export default function Hero() {
   }, []);
 
   return (
-    <section className="pt-[72px] pb-8">
+    <section className="pt-[64px] pb-6 sm:pt-[72px] sm:pb-8">
       <div className="mx-auto max-w-[980px] safe-px lg:px-6">
         <div className="mb-6">
           <h1 className="as-section-title">Today</h1>
@@ -59,27 +59,28 @@ export default function Hero() {
 
         <Link
           to={`/offer/${featured.slug}`}
-          className="group relative block as-card as-press aspect-[4/5] sm:aspect-[16/10] overflow-hidden"
+          className="group relative block as-card as-press aspect-[4/5] sm:aspect-[16/10] lg:aspect-[16/9] overflow-hidden"
         >
           <Image
-            src={featured.coverImage ? `${featured.coverImage.split("?")[0]}?v=3` : "/hero-rewards.jpg"}
+            src={featured.coverImage || "/hero-rewards.jpg"}
             alt={featured.headline}
             loading="eager"
+            fetchPriority="high"
             className="as-story-media absolute inset-0 h-full w-full object-cover object-top"
             fallback={<div className="absolute inset-0 bg-dg-navy" />}
           />
           <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/25 to-black/10" />
-          <div className="absolute inset-x-0 bottom-0 p-6 sm:p-8">
-            <p className="text-[12px] font-semibold uppercase tracking-wide text-white/70">
+          <div className="absolute inset-x-0 bottom-0 p-5 sm:p-8">
+            <p className="text-[11px] font-semibold uppercase tracking-wide text-white/70 sm:text-[12px]">
               App of the Day
             </p>
-            <h2 className="mt-1 text-[28px] sm:text-[34px] font-bold tracking-tight text-white leading-[1.1] max-w-md">
+            <h2 className="mt-1 text-[24px] sm:text-[34px] font-bold tracking-tight text-white leading-[1.1] max-w-md">
               {featured.headline}
             </h2>
-            <p className="mt-2 max-w-sm text-[15px] text-white/75 leading-snug">
+            <p className="mt-2 max-w-sm text-[14px] text-white/75 leading-snug sm:text-[15px]">
               Partner-verified entry path. No payment to discountglitch.
             </p>
-            <span className="mt-5 inline-flex h-9 items-center gap-1.5 rounded-lg bg-white px-4 text-[13px] font-semibold text-dg-navy as-press">
+            <span className="mt-4 inline-flex h-9 items-center gap-1.5 rounded-lg bg-white px-4 text-[13px] font-semibold text-dg-navy as-press sm:mt-5">
               Show Coupon
               <IconArrowRight size={13} />
             </span>

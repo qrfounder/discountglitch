@@ -10,9 +10,9 @@ const stats = [
 export default function InsightsCard() {
   return (
     <div className="as-card">
-      <div className="relative aspect-[2/1] overflow-hidden">
+      <div className="relative h-[116px] overflow-hidden sm:h-auto sm:aspect-[2/1]">
         <Image
-          src="/widgets/insights.jpg?v=1"
+          src="/widgets/insights.jpg"
           alt=""
           className="absolute inset-0 h-full w-full object-cover object-right"
           fallback={<div className="absolute inset-0 bg-[#1D1D1F]" />}

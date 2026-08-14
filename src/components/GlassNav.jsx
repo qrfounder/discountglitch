@@ -24,7 +24,7 @@ export default function GlassNav() {
     return () => window.removeEventListener("scroll", onScroll);
   }, []);
 
-  useEffect(() => setOpen(false), [location.pathname]);
+  useEffect(() => setOpen(false), [location.pathname, location.hash]);
 
   return (
     <header
@@ -35,10 +35,10 @@ export default function GlassNav() {
           : "bg-transparent"
       )}
     >
-      <div className="mx-auto flex h-[52px] max-w-[980px] items-center justify-between safe-px lg:px-6">
-        <BrandLogo size="md" />
+      <div className="mx-auto flex h-[52px] max-w-[980px] items-center justify-between gap-3 safe-px lg:px-6">
+        <BrandLogo size="md" className="min-w-0" />
 
-        <nav className="hidden sm:flex items-center gap-6">
+        <nav className="hidden md:flex items-center gap-5 lg:gap-6">
           {tabs.map((t) => (
             <a
               key={t.label}
@@ -56,8 +56,9 @@ export default function GlassNav() {
 
         <button
           type="button"
-          className="sm:hidden as-press inline-flex h-9 w-9 items-center justify-center rounded-full bg-black/[0.06] text-dg-navy"
+          className="md:hidden as-press inline-flex h-11 w-11 items-center justify-center rounded-full bg-black/[0.06] text-dg-navy"
           aria-label={open ? "Close" : "Menu"}
+          aria-expanded={open}
           onClick={() => setOpen((v) => !v)}
         >
           {open ? <X className="w-4 h-4" /> : <Menu className="w-4 h-4" />}
@@ -65,17 +66,25 @@ export default function GlassNav() {
       </div>
 
       {open && (
-        <div className="sm:hidden border-t border-black/[0.06] bg-[#F5F5F7] px-4 pb-4 pt-2">
+        <div className="md:hidden border-t border-black/[0.06] bg-[#F5F5F7] safe-px pb-[max(1rem,env(safe-area-inset-bottom))] pt-2">
           {tabs.map((t) => (
             <a
               key={t.label}
               href={t.href}
               onClick={() => setOpen(false)}
-              className="block rounded-xl px-3 py-3 text-[15px] font-medium text-dg-navy"
+              className="block rounded-xl px-3 py-3.5 text-[16px] font-medium text-dg-navy"
             >
               {t.label}
             </a>
           ))}
+          <a
+            href="/#apps"
+            onClick={() => setOpen(false)}
+            className="as-get-btn-solid mt-2 mb-2 flex h-11 w-full items-center justify-center gap-1.5 text-[14px]"
+          >
+            <IconSearch size={14} />
+            Browse Coupons
+          </a>
         </div>
       )}
     </header>

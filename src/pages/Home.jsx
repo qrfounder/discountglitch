@@ -63,7 +63,7 @@ export default function Home() {
                 See All
               </a>
             </div>
-            <div className="flex gap-4 overflow-x-auto hide-scrollbar pb-2 -mx-1 px-1">
+            <div className="flex gap-3 overflow-x-auto hide-scrollbar snap-x snap-mandatory pb-2 -mx-1 px-1">
               {featuredRow.map((o) => (
                 <OfferStoryCard key={o.slug} offer={o} />
               ))}
@@ -83,7 +83,7 @@ export default function Home() {
               <p className="mt-1 text-[14px] text-dg-muted">Open an offer, then tap Show Coupon to continue.</p>
             </div>
 
-            <div className="mb-4 flex items-center gap-2 rounded-xl bg-black/[0.05] px-3.5">
+            <div className="mb-4 flex min-h-11 items-center gap-2 rounded-xl bg-black/[0.05] px-3.5">
               <IconSearch size={15} className="text-dg-muted" />
               <input
                 value={query}
@@ -94,13 +94,13 @@ export default function Home() {
               />
             </div>
 
-            <div className="mb-5 flex gap-2 overflow-x-auto hide-scrollbar">
+            <div className="mb-5 flex gap-2 overflow-x-auto hide-scrollbar snap-x snap-mandatory pb-0.5 -mx-1 px-1">
               {categories.map((c) => (
                 <button
                   key={c}
                   type="button"
                   onClick={() => setActive(c)}
-                  className={`h-8 flex-shrink-0 rounded-full px-3.5 text-[13px] font-medium transition-colors ${
+                  className={`h-8 flex-shrink-0 snap-start rounded-full px-3.5 text-[13px] font-medium transition-colors ${
                     active === c
                       ? "bg-dg-navy text-white"
                       : "bg-white text-dg-navy shadow-sm"
@@ -111,8 +111,8 @@ export default function Home() {
               ))}
             </div>
 
-            <div className="grid gap-6 lg:grid-cols-5">
-              <div className="lg:col-span-3 space-y-2.5">
+            <div className="grid gap-5 md:grid-cols-5 md:gap-6">
+              <div className="md:col-span-3 min-w-0 space-y-2.5">
                 {filtered.map((o) => (
                   <SweepstakeCard key={o.slug} offer={o} />
                 ))}
@@ -122,8 +122,8 @@ export default function Home() {
                   </div>
                 )}
               </div>
-              <div className="lg:col-span-2">
-                <div className="lg:sticky lg:top-20 space-y-4">
+              <div className="md:col-span-2 min-w-0">
+                <div className="grid gap-4 sm:grid-cols-2 md:grid-cols-1 md:sticky md:top-[68px]">
                   <LiveFeed />
                   <InsightsCard />
                 </div>

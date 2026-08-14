@@ -31,7 +31,7 @@ export default function BrandLogo({
         draggable={false}
       />
       {showWordmark && (
-        <span className={cn("dg-wordmark", word)}>
+        <span className={cn("dg-wordmark whitespace-nowrap", word)}>
           discount<span className="dg-wordmark-accent">glitch</span>
         </span>
       )}

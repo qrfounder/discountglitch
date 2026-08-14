@@ -240,6 +240,7 @@
   .hide-scrollbar {
     -ms-overflow-style: none;
     scrollbar-width: none;
+    -webkit-overflow-scrolling: touch;
   }
   .hide-scrollbar::-webkit-scrollbar {
     display: none;

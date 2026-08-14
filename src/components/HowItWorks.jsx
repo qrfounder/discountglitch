@@ -30,12 +30,12 @@ export default function HowItWorks() {
           <h2 className="as-section-title text-[24px] sm:text-[28px]">How coupons work</h2>
         </div>
 
-        <div className="grid gap-3 sm:grid-cols-3">
+        <div className="grid gap-3 md:grid-cols-3">
           {steps.map((s, i) => (
-            <article key={s.title} className="as-card as-press p-5">
+            <article key={s.title} className="as-card as-press p-4 sm:p-5">
               <div className="mb-4 flex items-center justify-between">
                 <div
-                  className="as-app-icon flex h-14 w-14 items-center justify-center text-white shadow-[0_2px_8px_rgba(0,0,0,0.12)]"
+                  className="as-app-icon flex h-12 w-12 items-center justify-center text-white shadow-[0_2px_8px_rgba(0,0,0,0.12)] sm:h-14 sm:w-14"
                   style={{ background: s.color }}
                 >
                   <span className="relative z-[2]">

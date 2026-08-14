@@ -9,6 +9,11 @@ export default defineConfig({
       "@": path.resolve(__dirname, "./src"),
     },
   },
+  build: {
+    target: "es2020",
+    cssMinify: true,
+    modulePreload: true,
+  },
   server: {
     port: 5173,
     host: true,

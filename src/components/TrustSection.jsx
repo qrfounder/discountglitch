@@ -41,9 +41,9 @@ export default function TrustSection() {
 
         <div className="grid gap-3 sm:grid-cols-2">
           {modules.map((m) => (
-            <div key={m.name} className="as-card as-press flex gap-4 p-4">
+            <div key={m.name} className="as-card as-press flex gap-3 p-3.5 sm:gap-4 sm:p-4">
               <div
-                className="as-app-icon flex h-14 w-14 flex-shrink-0 items-center justify-center text-white shadow-[0_2px_8px_rgba(0,0,0,0.12)]"
+                className="as-app-icon flex h-12 w-12 flex-shrink-0 items-center justify-center text-white shadow-[0_2px_8px_rgba(0,0,0,0.12)] sm:h-14 sm:w-14"
                 style={{ background: m.color }}
               >
                 <span className="relative z-[2]">

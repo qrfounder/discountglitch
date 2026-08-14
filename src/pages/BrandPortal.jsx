@@ -25,7 +25,7 @@ export default function BrandPortal() {
     return (
       <div className="min-h-screen bg-dg-canvas">
         <GlassNav />
-        <div className="flex min-h-[70vh] items-center justify-center px-4 pt-24">
+        <div className="flex min-h-[70vh] items-center justify-center px-4 pt-[72px]">
           <div className="text-center">
             <h1 className="text-2xl font-bold text-dg-navy mb-3">Offer not found</h1>
             <Link to="/#apps" className="text-dg-blue text-[15px] font-medium">
@@ -49,7 +49,7 @@ export default function BrandPortal() {
       <PageTracker />
       <GlassNav />
 
-      <main className="pt-[68px] pb-16">
+      <main className="pt-[64px] pb-16 sm:pt-[72px]">
         <div className="mx-auto max-w-[980px] safe-px lg:px-6">
           <Link
             to="/#apps"
@@ -59,10 +59,10 @@ export default function BrandPortal() {
           </Link>
 
           {/* Brand header */}
-          <div className="mb-8 flex items-start gap-4">
+          <div className="mb-6 flex items-start gap-3 sm:mb-8 sm:gap-4">
             <AppIcon offer={offer} size="lg" />
             <div className="min-w-0 flex-1">
-              <h1 className="text-[24px] sm:text-[28px] font-bold tracking-tight text-dg-navy leading-tight">
+            <h1 className="text-[22px] sm:text-[28px] font-bold tracking-tight text-dg-navy leading-tight">
                 {offer.brand} Coupons
               </h1>
               <p className="mt-1 text-[15px] text-dg-muted">{offer.headline}</p>
@@ -72,9 +72,9 @@ export default function BrandPortal() {
 
           {/* Preview image */}
           <div className="as-card mb-8 overflow-hidden group">
-            <div className="aspect-[4/5] overflow-hidden sm:aspect-[16/10]">
+            <div className="aspect-[16/10] overflow-hidden sm:aspect-[16/9]">
               <Image
-                src={offer.coverImage ? `${offer.coverImage.split("?")[0]}?v=3` : undefined}
+                src={offer.coverImage}
                 alt={`${offer.brand} offer`}
                 className="as-story-media h-full w-full object-cover object-top"
                 loading="eager"

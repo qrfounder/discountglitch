@@ -7,6 +7,7 @@ export function Image({
   className,
   fallback,
   loading = "lazy",
+  fetchPriority,
   ...props
 }) {
   const [failed, setFailed] = useState(false);
@@ -25,6 +26,7 @@ export function Image({
       alt={alt}
       loading={loading}
       decoding="async"
+      fetchPriority={fetchPriority}
       onError={() => setFailed(true)}
       className={className}
       {...props}

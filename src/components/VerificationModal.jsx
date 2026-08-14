@@ -119,7 +119,7 @@ export default function VerificationModal({ offer, open, onClose, selectedTier =
       <div
         role="dialog"
         aria-modal="true"
-        className="relative z-10 w-full sm:max-w-md rounded-t-[28px] sm:rounded-[28px] bg-white shadow-[0_-8px_40px_rgba(0,0,0,0.2)] overflow-hidden"
+        className="relative z-10 w-full max-h-[min(92dvh,760px)] overflow-y-auto overscroll-contain sm:max-w-md rounded-t-[28px] sm:rounded-[28px] bg-white shadow-[0_-8px_40px_rgba(0,0,0,0.2)]"
         style={{ animation: "dg-feed-in 0.32s ease-out both" }}
       >
         <div className="flex justify-center pt-2.5 sm:hidden">
@@ -134,11 +134,11 @@ export default function VerificationModal({ offer, open, onClose, selectedTier =
           )}
         </div>
 
-        <div className="px-6 pb-7 pt-1 text-center">
+        <div className="px-5 pb-[max(1.75rem,env(safe-area-inset-bottom))] pt-1 text-center sm:px-6 sm:pb-7">
           {(phase === "preview" || phase === "unlocking") && (
             <>
-              <p className="text-[28px] font-extrabold tracking-tight text-[#7C3AED]">{tier.amount}</p>
-              <h2 className="mt-1 text-[22px] font-bold text-dg-navy">{tier.title}</h2>
+              <p className="text-[24px] font-extrabold tracking-tight text-[#7C3AED] sm:text-[28px]">{tier.amount}</p>
+              <h2 className="mt-1 text-[18px] font-bold text-dg-navy sm:text-[22px]">{tier.title}</h2>
 
               <div className="mt-5 rounded-xl border border-dashed border-[#C45C5C] bg-[#F8E8E8] px-4 py-3">
                 <p className="text-[15px] font-bold text-dg-navy">

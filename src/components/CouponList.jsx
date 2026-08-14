@@ -63,7 +63,7 @@ export default function CouponList({ offer, onShowCoupon }) {
             className="flex flex-col gap-3 rounded-xl bg-white p-4 shadow-[0_2px_12px_rgba(0,0,0,0.06)] sm:flex-row sm:items-center sm:gap-4 sm:p-4"
           >
             <div className="flex w-full flex-shrink-0 items-center justify-center sm:w-[100px] sm:justify-start">
-              <p className="text-center text-[22px] font-extrabold leading-[1.05] tracking-tight text-[#7C3AED] sm:text-[24px]">
+              <p className="text-center text-[20px] font-extrabold leading-[1.05] tracking-tight text-[#7C3AED] sm:text-[24px]">
                 {tier.amount.split(" ").map((part, i) => (
                   <span key={i} className="block">
                     {part}

@@ -12,23 +12,23 @@ export default function Footer() {
               Partner reward routing. Not affiliated with named retailers.
             </p>
           </div>
-          <div className="flex flex-wrap gap-x-6 gap-y-2 text-[12px]">
-            <a href="/#apps" className="text-dg-blue">
+          <div className="flex flex-wrap gap-x-5 gap-y-1 text-[13px]">
+            <a href="/#apps" className="inline-flex min-h-10 items-center text-dg-blue">
               Apps
             </a>
-            <a href="/#guide" className="text-dg-blue">
+            <a href="/#guide" className="inline-flex min-h-10 items-center text-dg-blue">
               Guide
             </a>
-            <a href="/#help" className="text-dg-blue">
+            <a href="/#help" className="inline-flex min-h-10 items-center text-dg-blue">
               Help
             </a>
-            <Link to="/privacy" className="text-dg-blue">
+            <Link to="/privacy" className="inline-flex min-h-10 items-center text-dg-blue">
               Privacy
             </Link>
-            <Link to="/terms" className="text-dg-blue">
+            <Link to="/terms" className="inline-flex min-h-10 items-center text-dg-blue">
               Terms
             </Link>
-            <a href="mailto:support@discountglitch.com" className="text-dg-blue">
+            <a href="mailto:support@discountglitch.com" className="inline-flex min-h-10 items-center text-dg-blue">
               Support
             </a>
           </div>

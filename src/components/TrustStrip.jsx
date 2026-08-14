@@ -16,23 +16,23 @@ export default function TrustStrip() {
   return (
     <section className="pb-6" aria-label="Feature apps">
       <div className="mx-auto max-w-[980px] safe-px lg:px-6">
-        <div className="flex gap-3 overflow-x-auto hide-scrollbar pb-1 -mx-1 px-1">
+        <div className="grid grid-cols-2 gap-2.5 sm:grid-cols-4 sm:gap-3">
           {apps.map((app) => (
             <div
               key={app.name}
-              className="as-press flex min-w-[168px] flex-1 items-center gap-3 rounded-[18px] bg-white p-3 shadow-[0_1px_3px_rgba(0,0,0,0.04)]"
+              className="as-press flex min-w-0 items-center gap-2.5 rounded-[18px] bg-white p-2.5 shadow-[0_1px_3px_rgba(0,0,0,0.04)] sm:gap-3 sm:p-3"
             >
               <div
-                className="as-app-icon flex h-12 w-12 flex-shrink-0 items-center justify-center text-white shadow-[0_2px_6px_rgba(0,0,0,0.12)]"
+                className="as-app-icon flex h-10 w-10 flex-shrink-0 items-center justify-center text-white shadow-[0_2px_6px_rgba(0,0,0,0.12)] sm:h-12 sm:w-12"
                 style={{ background: app.color }}
               >
                 <span className="relative z-[2]">
-                  <app.Icon size={22} />
+                  <app.Icon size={20} />
                 </span>
               </div>
               <div className="min-w-0">
-                <p className="text-[14px] font-semibold text-dg-navy">{app.name}</p>
-                <p className="truncate text-[11px] text-dg-muted">{app.tagline}</p>
+                <p className="truncate text-[13px] font-semibold text-dg-navy sm:text-[14px]">{app.name}</p>
+                <p className="truncate text-[10px] text-dg-muted sm:text-[11px]">{app.tagline}</p>
               </div>
             </div>
           ))}

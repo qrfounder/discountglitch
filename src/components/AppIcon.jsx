@@ -5,8 +5,8 @@ import { Image } from "@/components/ui/image";
 export default function AppIcon({ offer, size = "md", className }) {
   const sizes = {
     sm: "h-12 w-[72px]",
-    md: "h-16 w-24",
-    lg: "h-[72px] w-[108px] sm:h-20 sm:w-[120px]",
+    md: "h-14 w-[84px] sm:h-16 sm:w-24",
+    lg: "h-16 w-24 sm:h-20 sm:w-[120px]",
     xl: "h-[88px] w-[132px] sm:h-[100px] sm:w-[150px]",
   };
 
@@ -30,7 +30,7 @@ export default function AppIcon({ offer, size = "md", className }) {
       aria-hidden
     >
       <Image
-        src={offer.cardImage ? `${offer.cardImage.split("?")[0]}?v=2` : undefined}
+        src={offer.cardImage}
         alt=""
         className="h-full w-full object-contain object-center"
         fallback={letterFallback}

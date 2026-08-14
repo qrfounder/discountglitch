@@ -17,9 +17,9 @@ export default function LiveFeed() {
 
   return (
     <div className="as-card">
-      <div className="relative aspect-[2/1] overflow-hidden">
+      <div className="relative h-[116px] overflow-hidden sm:h-auto sm:aspect-[2/1]">
         <Image
-          src="/widgets/activity.jpg?v=1"
+          src="/widgets/activity.jpg"
           alt=""
           className="absolute inset-0 h-full w-full object-cover object-right"
           fallback={<div className="absolute inset-0 bg-[#1D1D1F]" />}
@@ -56,7 +56,7 @@ export default function LiveFeed() {
                 }}
               >
                 <Image
-                  src={offer?.cardImage ? `${offer.cardImage.split("?")[0]}?v=2` : undefined}
+                  src={offer?.cardImage}
                   alt=""
                   className="h-full w-full object-contain object-center"
                   fallback={
@@ -73,7 +73,7 @@ export default function LiveFeed() {
                 <p className="truncate text-[11px] text-dg-muted">{item.reward}</p>
               </div>
               <div className="flex-shrink-0 text-right">
-                <p className="text-[10px] font-semibold uppercase tracking-wide text-dg-muted">{item.city}</p>
+                <p className="max-w-[4.5rem] truncate text-[10px] font-semibold uppercase tracking-wide text-dg-muted sm:max-w-none">{item.city}</p>
                 <p className="text-[10px] tabular-nums text-dg-muted/80">{item.ago}</p>
               </div>
             </li>
