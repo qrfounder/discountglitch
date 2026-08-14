@@ -48,36 +48,22 @@ export default function Home() {
       <GlassNav />
 
       <main>
-        {/* Today story */}
-        <Hero />
-
-        {/* Feature apps strip */}
-        <TrustStrip />
-
-        {/* Must-haves horizontal collection */}
-        <section className="pb-8">
+        <section id="activity" className="scroll-mt-24 pt-[64px] pb-5 sm:pt-[72px] sm:pb-6">
           <div className="mx-auto max-w-[980px] safe-px lg:px-6">
-            <div className="mb-4 flex items-baseline justify-between">
-              <h2 className="text-[22px] font-bold tracking-tight text-dg-navy">Must-Haves</h2>
-              <a href="#apps" className="text-[15px] font-normal text-dg-blue">
-                See All
-              </a>
+            <div className="mb-3">
+              <p className="text-[12px] font-semibold text-dg-blue">Live</p>
+              <h2 className="as-section-title text-[24px] sm:text-[28px]">Activity</h2>
+              <p className="mt-1 text-[14px] text-dg-muted">People unlocking coupons as they happen.</p>
             </div>
-            <div className="flex gap-3 overflow-x-auto hide-scrollbar snap-x snap-mandatory pb-2 -mx-1 px-1">
-              {featuredRow.map((o) => (
-                <OfferStoryCard key={o.slug} offer={o} />
-              ))}
-            </div>
+            <LiveFeed />
           </div>
         </section>
 
-        {/* Guide app */}
         <HowItWorks />
 
-        {/* Apps catalog */}
-        <section id="apps" className="scroll-mt-24 py-8">
+        <section id="apps" className="scroll-mt-24 py-5 sm:py-6">
           <div className="mx-auto max-w-[980px] safe-px lg:px-6">
-            <div className="mb-5">
+            <div className="mb-3.5">
               <p className="text-[12px] font-semibold text-dg-blue">Coupons</p>
               <h2 className="as-section-title text-[24px] sm:text-[28px]">Brand Coupons</h2>
               <p className="mt-1 text-[14px] text-dg-muted">Open an offer, then tap Show Coupon to continue.</p>
@@ -123,11 +109,29 @@ export default function Home() {
                 )}
               </div>
               <div className="md:col-span-2 min-w-0">
-                <div className="grid gap-4 sm:grid-cols-2 md:grid-cols-1 md:sticky md:top-[68px]">
-                  <LiveFeed />
+                <div className="md:sticky md:top-[68px]">
                   <InsightsCard />
                 </div>
               </div>
+            </div>
+          </div>
+        </section>
+
+        <Hero />
+        <TrustStrip />
+
+        <section className="pb-5 sm:pb-6">
+          <div className="mx-auto max-w-[980px] safe-px lg:px-6">
+            <div className="mb-3 flex items-baseline justify-between">
+              <h2 className="text-[22px] font-bold tracking-tight text-dg-navy">Must-Haves</h2>
+              <a href="#apps" className="text-[15px] font-normal text-dg-blue">
+                See All
+              </a>
+            </div>
+            <div className="flex gap-3 overflow-x-auto hide-scrollbar snap-x snap-mandatory pb-2 -mx-1 px-1">
+              {featuredRow.map((o) => (
+                <OfferStoryCard key={o.slug} offer={o} />
+              ))}
             </div>
           </div>
         </section>

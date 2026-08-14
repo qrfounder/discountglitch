@@ -23,9 +23,9 @@ const steps = [
 
 export default function HowItWorks() {
   return (
-    <section id="guide" className="scroll-mt-24 py-10">
+    <section id="guide" className="scroll-mt-24 py-5 sm:py-6">
       <div className="mx-auto max-w-[980px] safe-px lg:px-6">
-        <div className="mb-5">
+        <div className="mb-3.5">
           <p className="text-[12px] font-semibold text-dg-blue">Guide</p>
           <h2 className="as-section-title text-[24px] sm:text-[28px]">How coupons work</h2>
         </div>

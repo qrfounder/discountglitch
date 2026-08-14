@@ -26,10 +26,10 @@ const faqs = [
 
 export default function FaqSection() {
   return (
-    <section id="help" className="scroll-mt-24 py-10">
+    <section id="help" className="scroll-mt-24 py-5 sm:py-6">
       <div className="mx-auto max-w-[980px] safe-px lg:px-6">
         <p className="text-[12px] font-semibold text-dg-blue">Help</p>
-        <h2 className="as-section-title text-[24px] sm:text-[28px] mb-5">Top Questions</h2>
+        <h2 className="as-section-title mb-3.5 text-[24px] sm:text-[28px]">Top Questions</h2>
 
         <div className="as-card px-4">
           <Accordion type="single" collapsible>

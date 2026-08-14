@@ -6,7 +6,7 @@ import BrandLogo from "@/components/BrandLogo";
 import { cn } from "@/lib/utils";
 
 const tabs = [
-  { href: "/", label: "Today" },
+  { href: "/#today", label: "Today" },
   { href: "/#apps", label: "Apps" },
   { href: "/#guide", label: "Guide" },
   { href: "/#help", label: "Help" },

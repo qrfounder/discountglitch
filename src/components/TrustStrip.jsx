@@ -14,7 +14,7 @@ const apps = [
 
 export default function TrustStrip() {
   return (
-    <section className="pb-6" aria-label="Feature apps">
+    <section className="pb-4 sm:pb-5" aria-label="Feature apps">
       <div className="mx-auto max-w-[980px] safe-px lg:px-6">
         <div className="grid grid-cols-2 gap-2.5 sm:grid-cols-4 sm:gap-3">
           {apps.map((app) => (

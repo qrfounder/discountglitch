@@ -34,10 +34,10 @@ const modules = [
 
 export default function TrustSection() {
   return (
-    <section id="trust" className="scroll-mt-24 py-10">
+    <section id="trust" className="scroll-mt-24 py-5 sm:py-6">
       <div className="mx-auto max-w-[980px] safe-px lg:px-6">
         <p className="text-[12px] font-semibold text-dg-blue">Trust & Safety</p>
-        <h2 className="as-section-title text-[24px] sm:text-[28px] mb-5">Built-in safeguards</h2>
+        <h2 className="as-section-title mb-3.5 text-[24px] sm:text-[28px]">Built-in safeguards</h2>
 
         <div className="grid gap-3 sm:grid-cols-2">
           {modules.map((m) => (

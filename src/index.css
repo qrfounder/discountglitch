@@ -258,11 +258,74 @@
     animation: dg-feed-in 0.45s ease-out both;
   }
 
+  .dg-feed-row-in {
+    animation: dg-feed-row-in 0.5s cubic-bezier(0.22, 1, 0.36, 1) both;
+  }
+
+  .dg-unlock-flash {
+    animation: dg-unlock-flash 1.1s ease-out both;
+  }
+
+  .dg-featured-in {
+    animation: dg-featured-in 0.7s cubic-bezier(0.22, 1, 0.36, 1) both;
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .dg-feed-in,
+    .dg-feed-row-in,
+    .dg-unlock-flash,
+    .dg-featured-in {
+      animation: none;
+    }
+  }
+
   @keyframes as-ping {
     75%,
     100% {
       transform: scale(2.2);
       opacity: 0;
+    }
+  }
+
+  @keyframes dg-feed-in {
+    from {
+      opacity: 0;
+      transform: translateY(6px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+
+  @keyframes dg-feed-row-in {
+    from {
+      opacity: 0;
+      transform: translateY(-12px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+
+  @keyframes dg-unlock-flash {
+    0% {
+      background-color: rgba(52, 199, 89, 0.16);
+    }
+    100% {
+      background-color: transparent;
+    }
+  }
+
+  @keyframes dg-featured-in {
+    from {
+      opacity: 0;
+      transform: scale(1.04);
+    }
+    to {
+      opacity: 1;
+      transform: scale(1);
     }
   }
 

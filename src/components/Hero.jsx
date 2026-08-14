@@ -50,9 +50,9 @@ export default function Hero() {
   }, []);
 
   return (
-    <section className="pt-[64px] pb-6 sm:pt-[72px] sm:pb-8">
+    <section id="today" className="scroll-mt-24 pt-5 pb-4 sm:pt-6 sm:pb-5">
       <div className="mx-auto max-w-[980px] safe-px lg:px-6">
-        <div className="mb-6">
+        <div className="mb-4">
           <h1 className="as-section-title">Today</h1>
           <p className="mt-1 text-[15px] text-dg-muted">{todayLabel}</p>
         </div>

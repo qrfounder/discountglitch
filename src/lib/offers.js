@@ -462,13 +462,166 @@ export const qualifyingQuestions = [
   },
 ];
 
-export const liveFeedSeed = [
-  { user: "Jordan M.", reward: "$750 Amazon Card", ago: "2m ago", city: "Los Angeles", slug: "amazon" },
-  { user: "Priya S.", reward: "$750 Costco Card", ago: "4m ago", city: "New York", slug: "costco" },
-  { user: "Chris L.", reward: "$1000 Best Buy Card", ago: "6m ago", city: "Chicago", slug: "bestbuy" },
-  { user: "Maya R.", reward: "$750 SHEIN Card", ago: "9m ago", city: "Atlanta", slug: "shein" },
-  { user: "Alex T.", reward: "$500 Walmart Card", ago: "11m ago", city: "San Francisco", slug: "walmart" },
-  { user: "Sam K.", reward: "$750 Sephora Card", ago: "14m ago", city: "Boston", slug: "sephora" },
-  { user: "Riley H.", reward: "$1000 StockX Card", ago: "17m ago", city: "Dallas", slug: "stockx" },
-  { user: "Taylor P.", reward: "$750 Target Card", ago: "21m ago", city: "Miami", slug: "target" },
+const FEED_NAMES = [
+  "Jordan M.",
+  "Priya S.",
+  "Chris L.",
+  "Maya R.",
+  "Alex T.",
+  "Sam K.",
+  "Riley H.",
+  "Taylor P.",
+  "Casey W.",
+  "Morgan B.",
+  "Nicole N.",
+  "David D.",
+  "Avery J.",
+  "Quinn C.",
+  "Jamie F.",
+  "Reese G.",
 ];
+
+const FEED_CITIES = [
+  "Los Angeles",
+  "Austin",
+  "Chicago",
+  "Atlanta",
+  "Denver",
+  "Seattle",
+  "Miami",
+  "Boston",
+  "Dallas",
+  "Phoenix",
+  "Nashville",
+  "Portland",
+  "San Diego",
+  "Tampa",
+  "Charlotte",
+  "Minneapolis",
+];
+
+function pick(arr) {
+  return arr[Math.floor(Math.random() * arr.length)];
+}
+
+function feedId() {
+  return `${Date.now().toString(36)}-${Math.random().toString(36).slice(2, 7)}`;
+}
+
+function feedDetail(kind, offer, amount, deal) {
+  if (kind === "coupon") return `Unlocked ${offer.brand} coupon`;
+  if (kind === "deal") return `Finished deal ${deal} of 5`;
+  return `$${amount} ${offer.brand} card`;
+}
+
+/** Curated first paint — mixed unlocks, no stacked $750 wins. */
+export const liveFeedSeed = [
+  {
+    id: "s1",
+    user: "Jordan M.",
+    city: "Los Angeles",
+    slug: "amazon",
+    kind: "coupon",
+    detail: "Unlocked Amazon coupon",
+    atOffset: 6000,
+  },
+  {
+    id: "s2",
+    user: "Priya S.",
+    city: "Austin",
+    slug: "costco",
+    kind: "tier",
+    amount: 50,
+    detail: "$50 Costco card",
+    atOffset: 38000,
+  },
+  {
+    id: "s3",
+    user: "Chris L.",
+    city: "Chicago",
+    slug: "shein",
+    kind: "deal",
+    deal: 4,
+    detail: "Finished deal 4 of 5",
+    atOffset: 92000,
+  },
+  {
+    id: "s4",
+    user: "Maya R.",
+    city: "Atlanta",
+    slug: "target",
+    kind: "coupon",
+    detail: "Unlocked Target coupon",
+    atOffset: 140000,
+  },
+  {
+    id: "s5",
+    user: "Alex T.",
+    city: "Denver",
+    slug: "starbucks",
+    kind: "tier",
+    amount: 25,
+    detail: "$25 Starbucks card",
+    atOffset: 210000,
+  },
+];
+
+export function initialLiveFeed() {
+  const now = Date.now();
+  return liveFeedSeed.map((event) => ({
+    ...event,
+    at: now - event.atOffset,
+  }));
+}
+
+export function createLiveEvent(visible = []) {
+  const takenSlugs = visible.map((e) => e.slug);
+  const takenNames = visible.map((e) => e.user);
+  const offerPool = offers.filter((o) => !takenSlugs.includes(o.slug));
+  const namePool = FEED_NAMES.filter((n) => !takenNames.includes(n));
+  const offer = pick(offerPool.length ? offerPool : offers);
+  const user = pick(namePool.length ? namePool : FEED_NAMES);
+  const roll = Math.random();
+  let kind;
+  let amount;
+  let deal;
+  if (roll < 0.46) {
+    kind = "coupon";
+  } else if (roll < 0.76) {
+    kind = "deal";
+    deal = pick([2, 3, 3, 4, 4, 5]);
+  } else if (roll < 0.96) {
+    kind = "tier";
+    amount = pick([10, 15, 25, 25, 50, 50, 50, 75, 100]);
+  } else {
+    kind = "prize";
+    amount = pick([150, 250, 250, 500]);
+  }
+  return {
+    id: feedId(),
+    user,
+    city: pick(FEED_CITIES),
+    slug: offer.slug,
+    kind,
+    amount,
+    deal,
+    detail: feedDetail(kind, offer, amount, deal),
+    at: Date.now(),
+  };
+}
+
+export function formatFeedAgo(at, now = Date.now()) {
+  const s = Math.max(0, Math.round((now - at) / 1000));
+  if (s < 9) return "just now";
+  if (s < 60) return `${s}s ago`;
+  const m = Math.floor(s / 60);
+  if (m === 1) return "1m ago";
+  if (m < 60) return `${m}m ago`;
+  const h = Math.floor(m / 60);
+  return h === 1 ? "1h ago" : `${h}h ago`;
+}
+
+export function hourUnlockCount() {
+  const hour = new Date().getHours();
+  return 17 + ((hour * 11) % 16);
+}

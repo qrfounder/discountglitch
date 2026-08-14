@@ -1,6 +1,6 @@
 export default function ClosingCta() {
   return (
-    <section className="py-10">
+    <section className="py-5 sm:py-6">
       <div className="mx-auto max-w-[980px] safe-px lg:px-6">
         <div className="as-card relative overflow-hidden bg-gradient-to-br from-[#0071E3] to-[#5856D6] p-6 sm:p-8 md:p-10 text-white">
           <p className="text-[12px] font-semibold uppercase tracking-wide text-white/70">Get Started</p>

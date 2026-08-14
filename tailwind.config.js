@@ -86,6 +86,18 @@ export default {
           from: { opacity: "0", transform: "translateY(6px)" },
           to: { opacity: "1", transform: "translateY(0)" },
         },
+        "dg-feed-row-in": {
+          from: { opacity: "0", transform: "translateY(-12px)" },
+          to: { opacity: "1", transform: "translateY(0)" },
+        },
+        "dg-unlock-flash": {
+          "0%": { backgroundColor: "rgba(52, 199, 89, 0.16)" },
+          "100%": { backgroundColor: "transparent" },
+        },
+        "dg-featured-in": {
+          from: { opacity: "0", transform: "scale(1.04)" },
+          to: { opacity: "1", transform: "scale(1)" },
+        },
       },
       animation: {
         "pulse-dot": "pulse-dot 1.6s ease-in-out infinite",
